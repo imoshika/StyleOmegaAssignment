@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">StyleOmegaAssignment</string>
+    <string name="txt_user">Username</string>
+    <string name="txt_pass">Password</string>
+    <string name="btn_login">Log in</string>
+    <string name="link_reg">Not a member? Register here</string>
+    <string name="txt_lname">Last name</string>
+    <string name="btn_register">Register</string>
+    <string name="txt_fname">First name</string>
+    <string name="txt_age">Age</string>
+    <string name="link_buy">Buy items</string>
+    <string name="link_addToCart">Add to cart</string>
+    <string name="link_Checkout">Checkout</string>
+    <string name="likn_search">Search</string>
+    <string name="link_contact">Contact Store</string>
+    <string name="link_share">Share</string>
+    <string name="link_search">Search</string>
+    <string name="welcome_msg">Welcome to StyleOmega!!!!!!</string>
+</resources>
