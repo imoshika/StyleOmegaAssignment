@@ -29,14 +29,14 @@ public class MainScreen extends AppCompatActivity {
             public void onClick(View v) {
                 Intent products = new Intent(MainScreen.this,ProductsDisplayScreen_Activity.class);
                 MainScreen.this.startActivity(products);
-                NewValue.put(content_provider.P_TYPE,"Casual Wear");
-                NewValue.put(content_provider.PRODUCT_ID,"1");
-                NewValue.put(content_provider.PRODUCT_NAME,"Blouse");
-                NewValue.put(content_provider.P_DESC,"Top quality custom made 100% cotton women sleeve top blouse");
+                //NewValue.put(content_provider.P_TYPE,"Casual Wear");
+                //NewValue.put(content_provider.PRODUCT_ID,"1");
+                //NewValue.put(content_provider.PRODUCT_NAME,"Blouse");
+                //NewValue.put(content_provider.P_DESC,"Top quality custom made 100% cotton women sleeve top blouse");
                 //NewValue.put(content_provider.PRICE,1500.00);
                 //NewValue.put(content_provider.QUANTITY,2);
 
-                Uri uri = getContentResolver().insert(content_provider.CONTENT_URI2, NewValue);
+                //Uri uri = getContentResolver().insert(content_provider.CONTENT_URI2, NewValue);
             }
         });
     }

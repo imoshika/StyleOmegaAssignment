@@ -16,4 +16,8 @@
     <string name="link_share">Share</string>
     <string name="link_search">Search</string>
     <string name="welcome_msg">Welcome to StyleOmega!!!!!!</string>
+    <string name="error_password">incorrect password</string>
+    <string name="already_member">Already a member? Log in</string>
+    <string name="hint_password">EditPassword</string>
+    <string name="hint_username">EditUsername</string>
 </resources>

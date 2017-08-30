@@ -16,17 +16,7 @@
             </intent-filter>
         </activity>
 
-        <provider
-            android:name=".content_provider"
-            android:authorities="com.example.imoshikasewwandi.styleomegaassignment.content_provider"
-            android:exported="false" />
-
         <activity android:name=".RegisterActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".LoginActivity" />
-        </activity>
-        <activity android:name=".UserActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".LoginActivity" />
