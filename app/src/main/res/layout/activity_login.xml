@@ -31,7 +31,7 @@
         android:layout_marginLeft="24dp"
         android:layout_marginRight="24dp"
         android:layout_marginTop="8dp"
-        android:onClick="onClick"
+        android:onClick="onClick [LoginActivity]"
         android:text="@string/btn_login"
         android:textColor="@android:color/black"
         android:textColorHighlight="@android:color/black"

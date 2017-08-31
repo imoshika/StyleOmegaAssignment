@@ -27,8 +27,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     EditText password;
     Button LoginBtn;
     TextView linkText;
-    final String userinputUsername = username.getText().toString();
-    final String userInputPassword = password.getText().toString();
+    //final String userinputUsername = username.getText().toString();
+    //final String userInputPassword = password.getText().toString();
 
     private final AppCompatActivity act = LoginActivity.this;
     private NestedScrollView nestedScrollView;
@@ -49,15 +49,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         initlzeListeners();
         initlzeObjects();
 
-        ActionBar bar = getActionBar();
-        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#EE82EE")));
+        /*ActionBar bar = getActionBar();
+        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#EE82EE")));*/
     }
 
     private void initlzeViews(){
-        final EditText username = (EditText) findViewById(R.id.eUsername);
-        final EditText password = (EditText) findViewById(R.id.ePassword);
-        final Button LoginBtn = (Button) findViewById(R.id.eLogin);
-        final TextView linkText = (TextView) findViewById(R.id.registerhere);
+        username = (EditText) findViewById(R.id.eUsername);
+        password = (EditText) findViewById(R.id.ePassword);
+        LoginBtn = (Button) findViewById(R.id.eLogin);
+        linkText = (TextView) findViewById(R.id.registerhere);
     }
 
     private void initlzeListeners(){
@@ -86,9 +86,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
-    private void DataToSQLite(){
 
-    }
 
     private void Verify(){
         if(dbHelper.CheckCustomer(username.getText().toString().trim(), password.getText().toString().trim())){

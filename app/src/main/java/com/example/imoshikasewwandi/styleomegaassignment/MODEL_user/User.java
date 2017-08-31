@@ -6,10 +6,12 @@ package com.example.imoshikasewwandi.styleomegaassignment.MODEL_user;
 
 public class User {
     private int ID;
-    private String u_name;
+    private String u_fname;
+    private String u_lname;
     private String u_email;
     private String u_password;
     private String username;
+    private String contact;
 
     public int getID() {
         return ID;
@@ -19,12 +21,12 @@ public class User {
         this.ID = ID;
     }
 
-    public String getU_name() {
-        return u_name;
+    public String getU_fname() {
+        return u_fname;
     }
 
-    public void setU_name(String u_name) {
-        this.u_name = u_name;
+    public void setU_fname(String u_name) {
+        this.u_fname = u_name;
     }
 
     public String getUsername() {
@@ -49,5 +51,21 @@ public class User {
 
     public void setU_password(String u_password) {
         this.u_password = u_password;
+    }
+
+    public String getU_lname() {
+        return u_lname;
+    }
+
+    public void setU_lname(String u_lname) {
+        this.u_lname = u_lname;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 }

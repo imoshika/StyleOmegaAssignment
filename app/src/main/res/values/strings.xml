@@ -7,7 +7,8 @@
     <string name="txt_lname">Last name</string>
     <string name="btn_register">Register</string>
     <string name="txt_fname">First name</string>
-    <string name="txt_age">Age</string>
+    <string name="txt_contact_number">Contact number</string>
+    <string name="txt_email">Email</string>
     <string name="link_buy">Buy items</string>
     <string name="link_addToCart">Add to cart</string>
     <string name="link_Checkout">Checkout</string>

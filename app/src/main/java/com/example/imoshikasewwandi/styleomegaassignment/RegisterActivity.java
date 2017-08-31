@@ -21,12 +21,16 @@ import com.example.imoshikasewwandi.styleomegaassignment.SQL_DATABASE.HelperData
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
 
     private final AppCompatActivity act = RegisterActivity.this;
-    EditText username;
-    EditText password;
+
+    EditText cust_username;
+    EditText cust_password;
     EditText Fname;
     EditText Lname;
+    EditText Contact_number;
+    EditText Email;
     TextView linkAlready;
     Button registerBtn;
+
     private ValidationInput inputValidation;
     private HelperDatabase dbHelper;
     private User user;
@@ -41,17 +45,19 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         initlzeListeners();
         initlzeObjects();
 
-        ActionBar bar = getActionBar();
-        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#EE82EE")));
+        /*ActionBar bar = getActionBar();
+        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#EE82EE")));*/
     }
 
     private void initlzeViews(){
-        final EditText FName = (EditText) findViewById(R.id.eFirstName);
-        final EditText Lname = (EditText) findViewById(R.id.eLastName);
-        final EditText username = (EditText) findViewById(R.id.eUsername);
-        final EditText password = (EditText) findViewById(R.id.ePassword);
-        final EditText Age = (EditText) findViewById(R.id.eAge);
-        final Button registerBtn = (Button) findViewById(R.id.RegisterBtn);
+        Fname = (EditText) findViewById(R.id.eFirstName);
+        Lname = (EditText) findViewById(R.id.eLastName);
+        cust_username = (EditText) findViewById(R.id.eUsername);
+        cust_password = (EditText) findViewById(R.id.ePassword);
+        Contact_number = (EditText) findViewById(R.id.eContact);
+        Email = (EditText) findViewById(R.id.eEmail);
+        registerBtn = (Button) findViewById(R.id.RegisterBtn);
+        linkAlready = (TextView) findViewById(R.id.linkAlready);
     }
 
     private void initlzeListeners(){
@@ -68,6 +74,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.RegisterBtn:
+                DataToSQLite();
                 break;
 
             case R.id.linkAlready:
@@ -76,10 +83,35 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
+    private void DataToSQLite(){
+        if(!dbHelper.CheckCustomer(cust_username.getText().toString().trim(), cust_password.getText().toString().trim())){
+            user.setID(user.getID());
+            user.setU_fname(Fname.getText().toString().trim());
+            user.setU_lname(Lname.getText().toString().trim());
+            user.setUsername(cust_username.getText().toString().trim());
+            user.setU_password(cust_password.getText().toString().trim());
+            user.setU_email(Email.getText().toString().trim());
+            user.setContact(Contact_number.getText().toString().trim());
+
+            dbHelper.addCustomer(user);
+
+            Toast.makeText(getApplicationContext(), "You have successfully been registered", Toast.LENGTH_LONG).show();
+            Intent correctLogin = new Intent(getApplicationContext(),LoginActivity.class);
+            startActivity(correctLogin);
+
+            emptyEditText();
+        }
+        else{
+            Toast.makeText(getApplicationContext(), "registration unsuccessful", Toast.LENGTH_LONG).show();
+        }
+    }
+
     private void emptyEditText(){
-        username.setText(null);
-        password.setText(null);
+        cust_username.setText(null);
+        cust_password.setText(null);
         Fname.setText(null);
         Lname.setText(null);
+        Contact_number.setText(null);
+        Email.setText(null);
     }
 }
