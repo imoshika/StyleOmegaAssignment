@@ -1,15 +1,20 @@
 package com.example.imoshikasewwandi.styleomegaassignment.SQL_DATABASE;
 
+import android.content.ClipData;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.view.View;
 import android.widget.ListView;
 
+import com.example.imoshikasewwandi.styleomegaassignment.MODEL_item.Item;
 import com.example.imoshikasewwandi.styleomegaassignment.MODEL_user.User;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,13 +22,14 @@ import java.util.List;
  * Created by Imoshika Sewwandi on 8/28/2017.
  */
 
-public class HelperDatabase extends SQLiteOpenHelper {
+public class HelperDatabase extends SQLiteOpenHelper{
 
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "Management.db";
     private static final String TABLE_CUSTOMER = "customer";
+    private static final String TABLE_PRODUCTS = "product_items";
 
-
+    //column names for the table customer
     private static final String COLUMN_ID = "cust_id";
     private static final String COLUMN_FNAME = "cust_fname";
     private static final String COLUMN_LNAME = "cust_lname";
@@ -33,15 +39,34 @@ public class HelperDatabase extends SQLiteOpenHelper {
     private static final String COLUMN_CONTACT  = "cust_contactnumber";
     SQLiteDatabase db;
 
+    //column names for the table product items
+    private static final String PRODUCT_ID = "p_id";
+    private static final String PRODUCT_NAME = "p_name";
+    private static final String PRODUCT_DESC = "p_desc";
+    private static final String PRODUCT_PRICE = "p_price";
+    private static final String PRODUCT_QTY = "p_qty";
+    private static final String PRODUCT_IMAGE = "p_img";
+
+    //creating the customer table
     private String CREATE_CUSTOMER_TABLE = "CREATE TABLE " + TABLE_CUSTOMER + "("
-            + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_FNAME +" TEXT,"
+            + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + COLUMN_FNAME +" TEXT,"
             + COLUMN_LNAME +" TEXT,"
             + COLUMN_USERNAME + " TEXT,"
             + COLUMN_PASSWORD + " TEXT,"
             +COLUMN_EMAIL + " TEXT,"
             + COLUMN_CONTACT + " TEXT"+ ")";
 
+    //creating the product item table
+    private String CREATE_PRODUCTS_TABLE = "CREATE TABLE " + TABLE_PRODUCTS + "("
+            + PRODUCT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + PRODUCT_NAME +" TEXT,"
+            + PRODUCT_DESC + " TEXT,"
+            + PRODUCT_PRICE + " DOUBLE,"
+            + PRODUCT_QTY + " DOUBLE,"
+            + PRODUCT_IMAGE + " BLOB" + ")";
+
     private String DROP_CUSTOMER_TABLE = "DROP TABLE IF EXISTS " + TABLE_CUSTOMER;
+    private String DROP_PRODUCTS_TABLE = "DROP TABLE IF EXISTS " + TABLE_PRODUCTS;
 
     public HelperDatabase(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -50,12 +75,14 @@ public class HelperDatabase extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_CUSTOMER_TABLE);
-        this.db = db;
+        db.execSQL(CREATE_PRODUCTS_TABLE);
+        //this.db = db;
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(DROP_CUSTOMER_TABLE);
+        db.execSQL(DROP_PRODUCTS_TABLE);
         onCreate(db);
     }
 
@@ -63,7 +90,7 @@ public class HelperDatabase extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(COLUMN_ID, user.getID());
+        //values.put(COLUMN_ID, user.getID());
         values.put(COLUMN_FNAME, user.getU_fname());
         values.put(COLUMN_LNAME, user.getU_lname());
         values.put(COLUMN_USERNAME, user.getUsername());
@@ -75,8 +102,23 @@ public class HelperDatabase extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void addProducts(Item item) throws SQLiteException{
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(PRODUCT_NAME, "Women dress");
+        values.put(PRODUCT_DESC, "lase work dark green dress");
+        values.put(PRODUCT_PRICE, 1500.00);
+        values.put(PRODUCT_QTY, 6);
+        //values.put(PRODUCT_IMAGE, image);
+
+        db.insert(TABLE_PRODUCTS, null, values);
+        db.close();
+
+    }
+
     public List<User> getAllCustomers(){
-            String [] tableColumns = {COLUMN_ID, COLUMN_FNAME,COLUMN_LNAME, COLUMN_EMAIL, COLUMN_USERNAME, COLUMN_PASSWORD};
+        String [] tableColumns = {COLUMN_ID, COLUMN_FNAME,COLUMN_LNAME, COLUMN_EMAIL, COLUMN_USERNAME, COLUMN_PASSWORD};
 
         String sortOrder = COLUMN_FNAME + "AC";
         List<User> customerlist = new ArrayList<User>();

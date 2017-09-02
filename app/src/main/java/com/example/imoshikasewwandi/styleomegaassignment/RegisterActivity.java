@@ -85,7 +85,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     private void DataToSQLite(){
         if(!dbHelper.CheckCustomer(cust_username.getText().toString().trim(), cust_password.getText().toString().trim())){
-            user.setID(user.getID());
+            //user.setID(user.getID());
             user.setU_fname(Fname.getText().toString().trim());
             user.setU_lname(Lname.getText().toString().trim());
             user.setUsername(cust_username.getText().toString().trim());
@@ -99,7 +99,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             Intent correctLogin = new Intent(getApplicationContext(),LoginActivity.class);
             startActivity(correctLogin);
 
-            emptyEditText();
+            //emptyEditText();
         }
         else{
             Toast.makeText(getApplicationContext(), "registration unsuccessful", Toast.LENGTH_LONG).show();

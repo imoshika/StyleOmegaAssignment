@@ -27,8 +27,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     EditText password;
     Button LoginBtn;
     TextView linkText;
-    //final String userinputUsername = username.getText().toString();
-    //final String userInputPassword = password.getText().toString();
+
 
     private final AppCompatActivity act = LoginActivity.this;
     private NestedScrollView nestedScrollView;
@@ -90,18 +89,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void Verify(){
         if(dbHelper.CheckCustomer(username.getText().toString().trim(), password.getText().toString().trim())){
-            Intent products = new Intent(act, ProductsDisplayScreen_Activity.class);
-            emptyText();
+            Intent products = new Intent(act, NavigationMenu.class);
             startActivity(products);
         }
         else{
 
         }
-    }
-
-    private void emptyText(){
-        username.setText(null);
-        password.setText(null);
     }
 
 }
