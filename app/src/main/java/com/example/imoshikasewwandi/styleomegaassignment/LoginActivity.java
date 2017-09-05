@@ -89,7 +89,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void Verify(){
         if(dbHelper.CheckCustomer(username.getText().toString().trim(), password.getText().toString().trim())){
-            Intent products = new Intent(act, NavigationMenu.class);
+            Intent products = new Intent(act, createzproduct.class);
             startActivity(products);
         }
         else{

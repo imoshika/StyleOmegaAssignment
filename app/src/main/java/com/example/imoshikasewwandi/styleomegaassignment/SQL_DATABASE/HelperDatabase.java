@@ -24,7 +24,7 @@ import java.util.List;
 
 public class HelperDatabase extends SQLiteOpenHelper{
 
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 5;
     private static final String DATABASE_NAME = "Management.db";
     private static final String TABLE_CUSTOMER = "customer";
     private static final String TABLE_PRODUCTS = "product_items";
@@ -63,7 +63,7 @@ public class HelperDatabase extends SQLiteOpenHelper{
             + PRODUCT_DESC + " TEXT,"
             + PRODUCT_PRICE + " DOUBLE,"
             + PRODUCT_QTY + " DOUBLE,"
-            + PRODUCT_IMAGE + " BLOB" + ")";
+            + PRODUCT_IMAGE + " TEXT" + ")";
 
     private String DROP_CUSTOMER_TABLE = "DROP TABLE IF EXISTS " + TABLE_CUSTOMER;
     private String DROP_PRODUCTS_TABLE = "DROP TABLE IF EXISTS " + TABLE_PRODUCTS;
@@ -81,9 +81,10 @@ public class HelperDatabase extends SQLiteOpenHelper{
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL(DROP_CUSTOMER_TABLE);
-        db.execSQL(DROP_PRODUCTS_TABLE);
-        onCreate(db);
+       //db.execSQL(DROP_CUSTOMER_TABLE);
+        //db.execSQL(DROP_PRODUCTS_TABLE);
+
+       // onCreate(db);
     }
 
     public void addCustomer(User user){
@@ -107,10 +108,10 @@ public class HelperDatabase extends SQLiteOpenHelper{
 
         ContentValues values = new ContentValues();
         values.put(PRODUCT_NAME, "Women dress");
-        values.put(PRODUCT_DESC, "lase work dark green dress");
-        values.put(PRODUCT_PRICE, 1500.00);
+        values.put(PRODUCT_DESC, "Multiple colors flower work dress with sleeves");
+        values.put(PRODUCT_PRICE, 1850.00);
         values.put(PRODUCT_QTY, 6);
-        //values.put(PRODUCT_IMAGE, image);
+        values.put(PRODUCT_IMAGE, "com.example.imoshikasewwandi.styleomegaassignment:drawable/women.dresses/dress2");
 
         db.insert(TABLE_PRODUCTS, null, values);
         db.close();

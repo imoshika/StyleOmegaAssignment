@@ -5,5 +5,8 @@ package com.example.imoshikasewwandi.styleomegaassignment;
  */
 
 public class ItemSubCategory {
+    private String Item_subName;
+    private int Item_subCode;
+
 
 }
