@@ -1,21 +1,14 @@
 package com.example.imoshikasewwandi.styleomegaassignment;
 
-import android.app.ActionBar;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.AppCompatButton;
-import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+
 import com.example.imoshikasewwandi.styleomegaassignment.HELPER_PKG.ValidationInput;
 import com.example.imoshikasewwandi.styleomegaassignment.MODEL_user.User;
 import com.example.imoshikasewwandi.styleomegaassignment.SQL_DATABASE.HelperDatabase;
@@ -86,10 +79,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
 
-
     private void Verify(){
         if(dbHelper.CheckCustomer(username.getText().toString().trim(), password.getText().toString().trim())){
-            Intent products = new Intent(act, createzproduct.class);
+            Intent products = new Intent(act, MainScreen.class);
             startActivity(products);
         }
         else{

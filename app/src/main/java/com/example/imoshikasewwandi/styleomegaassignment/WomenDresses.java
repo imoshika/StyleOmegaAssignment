@@ -13,43 +13,45 @@ import com.example.imoshikasewwandi.styleomegaassignment.SQL_DATABASE.HelperData
 import java.util.ArrayList;
 import java.util.List;
 
-public class WomenJeans extends AppCompatActivity {
+public class WomenDresses extends AppCompatActivity {
 
-
-    List<Item> items;
-    ListView womenJeansList;
+    List <Item> items;
+    ListView womenDressList;
     HelperDatabase db;
     Item i;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_women_jeans);
-        womenJeansList = (ListView) findViewById(R.id.womenJeansList);
+        setContentView(R.layout.activity_women_dresses);
+        womenDressList = (ListView) findViewById(R.id.womenDressList);
         items = new ArrayList<>();
         db = new HelperDatabase(this);
         i = new Item();
 
         populateList();
+
     }
 
     public void populateList(){
         items = db.getAllProductItems();
 
-        ArrayList <Item> onlyJeans = new ArrayList<>();
+        ArrayList <Item> onlyDresses = new ArrayList<>();
         Item item = null;
         for(int i = 0; i<items.size(); i++){
-            item = items.get(i);
-            if(item.getP_name().equals("Women jean")){
-                onlyJeans.add(item);
+                item = items.get(i);
+            if(item.getP_name().equals("Women dress")){
+                onlyDresses.add(item);
             }
         }
 
-        ProductsAdapter pItemAdapter = new ProductsAdapter(this, R.layout.user_row, onlyJeans);
-        womenJeansList.setAdapter(pItemAdapter);
+        ProductsAdapter pItemAdapter = new ProductsAdapter(this, R.layout.user_row, onlyDresses);
+        womenDressList.setAdapter(pItemAdapter);
 
 
     }
 
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.display_catagories, menu);
@@ -65,29 +67,32 @@ public class WomenJeans extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.womenDress) {
-            Intent dress = new Intent(WomenJeans.this, WomenDresses.class);
+            Intent dress = new Intent(WomenDresses.this, WomenDresses.class);
             startActivity(dress);
 
         } else if (id == R.id.womenJeans) {
-            Intent jean = new Intent(WomenJeans.this, WomenJeans.class);
+            Intent jean = new Intent(WomenDresses.this, WomenJeans.class);
             startActivity(jean);
 
         } else if (id == R.id.womenSkirts) {
-            Intent skirt = new Intent(WomenJeans.this, WomenSkirts.class);
+            Intent skirt = new Intent(WomenDresses.this, WomenSkirts.class);
             startActivity(skirt);
         } else if (id == R.id.womenSweaters) {
-            Intent sweater = new Intent(WomenJeans.this, WomenSweaters.class);
+            Intent sweater = new Intent(WomenDresses.this, WomenSweaters.class);
             startActivity(sweater);
 
         } else if (id == R.id.womenTopWear) {
-            Intent tops = new Intent(WomenJeans.this, WomenTopwear.class);
+            Intent tops = new Intent(WomenDresses.this, WomenTopwear.class);
             startActivity(tops);
 
         } else if (id == R.id.womenJumpsuits) {
-            Intent jumpsuit = new Intent(WomenJeans.this, WomenJumpsuits.class);
+            Intent jumpsuit = new Intent(WomenDresses.this, WomenJumpsuits.class);
             startActivity(jumpsuit);
         }
 
         return super.onOptionsItemSelected(item);
     }
+
+
+
 }

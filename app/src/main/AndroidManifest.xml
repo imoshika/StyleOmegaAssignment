@@ -20,12 +20,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".LoginActivity" />
         </activity>
-        <activity android:name=".MainScreen" />
-        <activity android:name=".createzproduct" />
         <activity
-            android:name=".NavigationMenu"
-            android:label="@string/title_activity_navigation_menu"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:name=".MainScreen"
+            android:label="@string/title_activity_display_catagories"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".WomenDresses" />
+        <activity android:name=".WomenJeans" />
+        <activity android:name=".WomenSkirts" />
+        <activity android:name=".WomenSweaters" />
+        <activity android:name=".WomenJumpsuits" />
+        <activity android:name=".WomenTopwear"></activity>
     </application>
 
 </manifest>

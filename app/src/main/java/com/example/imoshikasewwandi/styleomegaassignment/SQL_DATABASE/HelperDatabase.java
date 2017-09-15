@@ -103,25 +103,49 @@ public class HelperDatabase extends SQLiteOpenHelper{
         db.close();
     }
 
-    public void addProducts(Item item) throws SQLiteException{
-        SQLiteDatabase db = this.getWritableDatabase();
+    public List<Item> getAllProductItems(){
+        String [] tableColumns = {PRODUCT_ID,PRODUCT_NAME, PRODUCT_DESC, PRODUCT_PRICE, PRODUCT_QTY, PRODUCT_IMAGE};
 
-        ContentValues values = new ContentValues();
-        values.put(PRODUCT_NAME, "Women dress");
-        values.put(PRODUCT_DESC, "Multiple colors flower work dress with sleeves");
-        values.put(PRODUCT_PRICE, 1850.00);
-        values.put(PRODUCT_QTY, 6);
-        values.put(PRODUCT_IMAGE, "com.example.imoshikasewwandi.styleomegaassignment:drawable/women.dresses/dress2");
+        String sortOrder = PRODUCT_NAME + " ASC";
+        List<Item> productlist = new ArrayList<Item>();
+        SQLiteDatabase db = this.getReadableDatabase();
 
-        db.insert(TABLE_PRODUCTS, null, values);
+        Cursor c = db.query(TABLE_PRODUCTS, tableColumns, null,null,null,null,sortOrder);
+
+      /*  if(c.moveToFirst()){
+            do{
+                Item item = new Item();
+                item.setPID(Integer.parseInt(c.getString(c.getColumnIndex(PRODUCT_ID))));
+                item.setP_name(c.getString(c.getColumnIndex(PRODUCT_NAME)));
+                item.setP_desc(c.getString(c.getColumnIndex(PRODUCT_DESC)));
+                item.setP_price(Double.parseDouble(c.getString(c.getColumnIndex(PRODUCT_PRICE))));
+                item.setP_qty(Integer.parseInt(c.getString(c.getColumnIndex(PRODUCT_QTY))));
+                item.setImage(c.getString(c.getColumnIndex(PRODUCT_IMAGE)));
+                productlist.add(item);
+            }while (c.moveToNext());
+
+        }*/
+
+
+        for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+            Item item = new Item();
+            item.setPID(Integer.parseInt(c.getString(c.getColumnIndex(PRODUCT_ID))));
+            item.setP_name(c.getString(c.getColumnIndex(PRODUCT_NAME)));
+            item.setP_desc(c.getString(c.getColumnIndex(PRODUCT_DESC)));
+            item.setP_price(Double.parseDouble(c.getString(c.getColumnIndex(PRODUCT_PRICE))));
+            item.setP_qty(Integer.parseInt(c.getString(c.getColumnIndex(PRODUCT_QTY))));
+            item.setImage(c.getString(c.getColumnIndex(PRODUCT_IMAGE)));
+            productlist.add(item);
+        }
+        c.close();
         db.close();
-
+        return productlist;
     }
 
     public List<User> getAllCustomers(){
         String [] tableColumns = {COLUMN_ID, COLUMN_FNAME,COLUMN_LNAME, COLUMN_EMAIL, COLUMN_USERNAME, COLUMN_PASSWORD};
 
-        String sortOrder = COLUMN_FNAME + "AC";
+        String sortOrder = COLUMN_FNAME + "ASC";
         List<User> customerlist = new ArrayList<User>();
         SQLiteDatabase db = this.getReadableDatabase();
 
