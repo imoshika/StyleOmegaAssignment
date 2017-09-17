@@ -6,15 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.imoshikasewwandi.styleomegaassignment.MODEL_user.User;
 import com.example.imoshikasewwandi.styleomegaassignment.SQL_DATABASE.HelperDatabase;
 
-public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
+public class UpdateProfileActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private final AppCompatActivity act = RegisterActivity.this;
+    private final AppCompatActivity act = UpdateProfileActivity.this;
 
     EditText cust_username;
     EditText cust_password;
@@ -22,25 +21,21 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     EditText Lname;
     EditText Contact_number;
     EditText Email;
-    TextView linkAlready;
-    Button registerBtn;
+    Button updateBtn;
 
-    //private ValidationInput inputValidation;
     private HelperDatabase dbHelper;
     private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_update_profile);
+
         getSupportActionBar().hide();
 
         initlzeViews();
         initlzeListeners();
         initlzeObjects();
-
-        /*ActionBar bar = getActionBar();
-        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#EE82EE")));*/
     }
 
     private void initlzeViews(){
@@ -50,13 +45,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         cust_password = (EditText) findViewById(R.id.ePassword);
         Contact_number = (EditText) findViewById(R.id.eContact);
         Email = (EditText) findViewById(R.id.eEmail);
-        registerBtn = (Button) findViewById(R.id.registerBtn);
-        linkAlready = (TextView) findViewById(R.id.linkAlready);
+        updateBtn = (Button) findViewById(R.id.registerBtn);
+
     }
 
-    private void initlzeListeners(){
-        registerBtn.setOnClickListener(this);
-        linkAlready.setOnClickListener(this);
+    private void initlzeListeners() {
+        updateBtn.setOnClickListener(this);
     }
 
     private void initlzeObjects(){
@@ -66,20 +60,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.registerBtn:
-                DataToSQLite();
-                break;
-
-            case R.id.linkAlready:
-                finish();
-                break;
-        }
-    }
-
-    private void DataToSQLite(){
-        if(!dbHelper.CheckCustomer(cust_username.getText().toString().trim(), cust_password.getText().toString().trim())){
-            //user.setID(user.getID());
+        if(updateBtn.getId() == R.id.updateBtn){
             user.setU_fname(Fname.getText().toString().trim());
             user.setU_lname(Lname.getText().toString().trim());
             user.setUsername(cust_username.getText().toString().trim());
@@ -87,25 +68,15 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             user.setU_email(Email.getText().toString().trim());
             user.setContact(Contact_number.getText().toString().trim());
 
-            dbHelper.addCustomer(user);
-
-            Toast.makeText(getApplicationContext(), "You have successfully been registered", Toast.LENGTH_LONG).show();
-            Intent correctLogin = new Intent(getApplicationContext(),LoginActivity.class);
-            startActivity(correctLogin);
-
-            //emptyEditText();
+            dbHelper.updateCustomer(user);
+            Toast.makeText(getApplicationContext(), "your account has been successfully updated", Toast.LENGTH_LONG).show();
+            Intent mainscreen = new Intent(act, MainScreen.class);
+            startActivity(mainscreen);
         }
         else{
-            Toast.makeText(getApplicationContext(), "registration unsuccessful, the user already exists", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "your account has not been updated yet", Toast.LENGTH_LONG).show();
         }
     }
 
-    private void emptyEditText(){
-        cust_username.setText(null);
-        cust_password.setText(null);
-        Fname.setText(null);
-        Lname.setText(null);
-        Contact_number.setText(null);
-        Email.setText(null);
-    }
+
 }

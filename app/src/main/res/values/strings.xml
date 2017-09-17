@@ -1,11 +1,12 @@
 <resources>
-    <string name="app_name">StyleOmegaAssignment</string>
+    <string name="app_name">StyleOmega</string>
     <string name="txt_user">Username</string>
     <string name="txt_pass">Password</string>
     <string name="btn_login">Log in</string>
     <string name="link_reg">Not a member? Register here</string>
     <string name="txt_lname">Last name</string>
     <string name="btn_register">Register</string>
+    <string name="btn_update">Update</string>
     <string name="txt_fname">First name</string>
     <string name="txt_contact_number">Contact number</string>
     <string name="txt_email">Email</string>
@@ -21,6 +22,10 @@
     <string name="already_member">Already a member? Log in</string>
     <string name="hint_password">EditPassword</string>
     <string name="hint_username">EditUsername</string>
+    <string name="message">We warmly welcome you to our online clothing store..
+          go to the link below to manage your account info... :)
+    </string>
+    <string name="link_manageAccount"> Manage Account Information </string>
     <string name="open">Open</string>
     <string name="close">Close</string>
 

@@ -29,7 +29,15 @@
         <activity android:name=".WomenSkirts" />
         <activity android:name=".WomenSweaters" />
         <activity android:name=".WomenJumpsuits" />
-        <activity android:name=".WomenTopwear"></activity>
+        <activity android:name=".WomenTopwear" />
+        <activity android:name=".ClothesDetailScreen" />
+        <activity android:name=".UpdateProfileActivity" />
+        <activity android:name=".MenShirts" />
+        <activity android:name=".MenTShirts" />
+        <activity android:name=".MenJackets" />
+        <activity android:name=".MenShorts" />
+        <activity android:name=".MenJeans" />
+        <activity android:name=".KidsWear"></activity>
     </application>
 
 </manifest>

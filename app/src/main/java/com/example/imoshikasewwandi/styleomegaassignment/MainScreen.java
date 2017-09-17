@@ -113,7 +113,28 @@ public class MainScreen extends AppCompatActivity
         } else if (id == R.id.womenJumpsuits) {
             Intent jumpsuit = new Intent(MainScreen.this, WomenJumpsuits.class);
             startActivity(jumpsuit);
+        } else if(id == R.id.menShirts){
+            Intent menShirts = new Intent(MainScreen.this, MenShirts.class);
+            startActivity(menShirts);
+        }else if(id == R.id.menJackets) {
+            Intent menJackets = new Intent(MainScreen.this, MenJackets.class);
+            startActivity(menJackets);
+        }else if(id == R.id.menJeans) {
+            Intent menJeans = new Intent(MainScreen.this, MenJeans.class);
+            startActivity(menJeans);
         }
+        else if(id == R.id.menShorts) {
+            Intent menShorts = new Intent(MainScreen.this, MenShorts.class);
+            startActivity(menShorts);
+        }
+        else if(id == R.id.menTshirts) {
+            Intent mentshirt = new Intent(MainScreen.this, MenTShirts.class);
+            startActivity(mentshirt);
+        }else if(id == R.id.kidsWear){
+            Intent kids = new Intent(MainScreen.this, KidsWear.class);
+            startActivity(kids);
+        }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

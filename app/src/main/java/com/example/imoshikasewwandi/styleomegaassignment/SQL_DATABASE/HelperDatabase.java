@@ -42,7 +42,7 @@ public class HelperDatabase extends SQLiteOpenHelper{
     //column names for the table product items
     private static final String PRODUCT_ID = "p_id";
     private static final String PRODUCT_NAME = "p_name";
-    private static final String PRODUCT_DESC = "p_desc";
+    public static final String PRODUCT_DESC = "p_desc";
     private static final String PRODUCT_PRICE = "p_price";
     private static final String PRODUCT_QTY = "p_qty";
     private static final String PRODUCT_IMAGE = "p_img";
@@ -103,6 +103,21 @@ public class HelperDatabase extends SQLiteOpenHelper{
         db.close();
     }
 
+    public void updateCustomer(User user){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_FNAME, user.getU_fname());
+        values.put(COLUMN_LNAME, user.getU_lname());
+        values.put(COLUMN_USERNAME, user.getUsername());
+        values.put(COLUMN_PASSWORD, user.getU_password());
+        values.put(COLUMN_EMAIL, user.getU_email());
+        values.put(COLUMN_CONTACT, user.getContact());
+
+        db.update(TABLE_CUSTOMER, values, COLUMN_ID + " = ?", new String[]{String.valueOf(user.getID())});
+        db.close();
+    }
+
     public List<Item> getAllProductItems(){
         String [] tableColumns = {PRODUCT_ID,PRODUCT_NAME, PRODUCT_DESC, PRODUCT_PRICE, PRODUCT_QTY, PRODUCT_IMAGE};
 
@@ -111,20 +126,6 @@ public class HelperDatabase extends SQLiteOpenHelper{
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor c = db.query(TABLE_PRODUCTS, tableColumns, null,null,null,null,sortOrder);
-
-      /*  if(c.moveToFirst()){
-            do{
-                Item item = new Item();
-                item.setPID(Integer.parseInt(c.getString(c.getColumnIndex(PRODUCT_ID))));
-                item.setP_name(c.getString(c.getColumnIndex(PRODUCT_NAME)));
-                item.setP_desc(c.getString(c.getColumnIndex(PRODUCT_DESC)));
-                item.setP_price(Double.parseDouble(c.getString(c.getColumnIndex(PRODUCT_PRICE))));
-                item.setP_qty(Integer.parseInt(c.getString(c.getColumnIndex(PRODUCT_QTY))));
-                item.setImage(c.getString(c.getColumnIndex(PRODUCT_IMAGE)));
-                productlist.add(item);
-            }while (c.moveToNext());
-
-        }*/
 
 
         for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
@@ -189,6 +190,24 @@ public class HelperDatabase extends SQLiteOpenHelper{
         return false;
     }
 
+    public Item getItem(String desc){
 
+        SQLiteDatabase db = getReadableDatabase();
+        Item item = null;
+
+        String selectItem = "SELECT * FROM " + TABLE_PRODUCTS + " WHERE " + PRODUCT_DESC + "='" + desc+ "'";
+
+        Cursor c = db.rawQuery(selectItem, null);
+        if (c.moveToFirst()) {
+            item = new Item();
+            //item.setPID(c.getInt(c.getColumnIndex(PRODUCT_ID)));
+            item.setP_desc(c.getString(c.getColumnIndex(PRODUCT_DESC)));
+            item.setP_price(c.getDouble(c.getColumnIndex(PRODUCT_PRICE)));
+            item.setImage(c.getString(c.getColumnIndex(PRODUCT_IMAGE)));
+
+        }
+
+        return item;
+    }
 
 }

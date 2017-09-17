@@ -56,4 +56,9 @@ public class ProductsAdapter extends ArrayAdapter<Item> {
 
         return ItemView;
     }
+
+    @Override
+    public boolean isEnabled(int position) {
+        return true;
+    }
 }

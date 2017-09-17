@@ -2,26 +2,11 @@
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorControlHighlight"
-    tools:context="com.example.imoshikasewwandi.styleomegaassignment.MainScreen"
-    android:id="@+id/drawerLayout">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="64dp"
-            android:text="Welcome to StyleOmega"
-            android:textAlignment="center"
-            android:textColor="@android:color/black"
-            android:textSize="36sp"
-            android:textStyle="italic" />
-    </LinearLayout>
+    tools:context="com.example.imoshikasewwandi.styleomegaassignment.MainScreen">
 
 
 

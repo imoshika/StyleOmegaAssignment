@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.imoshikasewwandi.styleomegaassignment.HELPER_PKG.ValidationInput;
 import com.example.imoshikasewwandi.styleomegaassignment.MODEL_user.User;
@@ -85,7 +86,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             startActivity(products);
         }
         else{
-
+            Toast.makeText(getApplicationContext(), "Cannot log in", Toast.LENGTH_LONG).show();
         }
     }
 
