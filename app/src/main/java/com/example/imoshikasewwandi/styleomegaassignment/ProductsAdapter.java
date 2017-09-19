@@ -49,8 +49,8 @@ public class ProductsAdapter extends ArrayAdapter<Item> {
         productDesc.setText(item.getP_desc());
         productPrice.setText(String.valueOf(item.getP_price()));
 
-        //int id = context.getResources().getIdentifier(item.getImage(), "drawable", context.getPackageName());
-        int id = getContext().getResources().getIdentifier(item.getImage(), null, null);
+        int id = context.getResources().getIdentifier(item.getImage(), "drawable", context.getPackageName());
+        //int id = getContext().getResources().getIdentifier(item.getImage(), null, null);
         image.setImageResource(id);
 
 

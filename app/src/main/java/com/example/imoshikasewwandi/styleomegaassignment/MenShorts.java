@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.imoshikasewwandi.styleomegaassignment.MODEL_item.Item;
@@ -46,6 +48,16 @@ public class MenShorts extends AppCompatActivity {
         }
 
         ProductsAdapter pItemAdapter = new ProductsAdapter(this, R.layout.user_row, onlyJeans);
+        menShorts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Item it = (Item)menShorts.getItemAtPosition(position);
+                String desc= it.getP_desc();
+                Intent i = new Intent(MenShorts.this, ClothesDetailScreen.class);
+                i.putExtra("desc",desc);
+                startActivity(i);
+            }
+        });
         menShorts.setAdapter(pItemAdapter);
 
 
@@ -76,11 +88,7 @@ public class MenShorts extends AppCompatActivity {
         } else if (id == R.id.womenSkirts) {
             Intent skirt = new Intent(MenShorts.this, WomenSkirts.class);
             startActivity(skirt);
-        } else if (id == R.id.womenSweaters) {
-            Intent sweater = new Intent(MenShorts.this, WomenSweaters.class);
-            startActivity(sweater);
-
-        } else if (id == R.id.womenTopWear) {
+        }  else if (id == R.id.womenTopWear) {
             Intent tops = new Intent(MenShorts.this, WomenTopwear.class);
             startActivity(tops);
 

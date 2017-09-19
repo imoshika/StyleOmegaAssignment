@@ -107,6 +107,7 @@ public class HelperDatabase extends SQLiteOpenHelper{
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
+        values.put(COLUMN_ID, user.getID());
         values.put(COLUMN_FNAME, user.getU_fname());
         values.put(COLUMN_LNAME, user.getU_lname());
         values.put(COLUMN_USERNAME, user.getUsername());
@@ -200,7 +201,7 @@ public class HelperDatabase extends SQLiteOpenHelper{
         Cursor c = db.rawQuery(selectItem, null);
         if (c.moveToFirst()) {
             item = new Item();
-            //item.setPID(c.getInt(c.getColumnIndex(PRODUCT_ID)));
+            item.setPID(c.getInt(c.getColumnIndex(PRODUCT_ID)));
             item.setP_desc(c.getString(c.getColumnIndex(PRODUCT_DESC)));
             item.setP_price(c.getDouble(c.getColumnIndex(PRODUCT_PRICE)));
             item.setImage(c.getString(c.getColumnIndex(PRODUCT_IMAGE)));

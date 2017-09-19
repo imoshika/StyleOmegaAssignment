@@ -3,6 +3,9 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/updateInfo"
+            android:title="Update account info" />
+        <item
             android:id="@+id/womenDress"
             android:title="Women wear -> Dressses" />
         <item

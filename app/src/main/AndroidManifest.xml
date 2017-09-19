@@ -27,7 +27,6 @@
         <activity android:name=".WomenDresses" />
         <activity android:name=".WomenJeans" />
         <activity android:name=".WomenSkirts" />
-        <activity android:name=".WomenSweaters" />
         <activity android:name=".WomenJumpsuits" />
         <activity android:name=".WomenTopwear" />
         <activity android:name=".ClothesDetailScreen" />

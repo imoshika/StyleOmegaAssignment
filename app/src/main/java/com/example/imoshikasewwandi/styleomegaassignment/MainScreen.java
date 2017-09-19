@@ -90,7 +90,11 @@ public class MainScreen extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.womenDress) {
+        if(id == R.id.updateInfo){
+            Intent dress = new Intent(MainScreen.this, UpdateProfileActivity.class);
+            startActivity(dress);
+        }
+        else if (id == R.id.womenDress) {
             Intent dress = new Intent(MainScreen.this, WomenDresses.class);
             startActivity(dress);
 
@@ -102,11 +106,7 @@ public class MainScreen extends AppCompatActivity
         } else if (id == R.id.womenSkirts) {
             Intent skirt = new Intent(MainScreen.this, WomenSkirts.class);
             startActivity(skirt);
-        } else if (id == R.id.womenSweaters) {
-            Intent sweater = new Intent(MainScreen.this, WomenSweaters.class);
-            startActivity(sweater);
-
-        } else if (id == R.id.womenTopWear) {
+        }  else if (id == R.id.womenTopWear) {
             Intent tops = new Intent(MainScreen.this, WomenTopwear.class);
             startActivity(tops);
 

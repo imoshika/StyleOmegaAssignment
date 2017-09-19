@@ -15,7 +15,7 @@ import com.example.imoshikasewwandi.styleomegaassignment.SQL_DATABASE.HelperData
 public class ClothesDetailScreen extends AppCompatActivity implements View.OnClickListener{
 
     Item item;
-    HelperDatabase db;
+
     TextView productPDesc;
     TextView productPPrice;
     ImageView productPImage;
@@ -25,6 +25,7 @@ public class ClothesDetailScreen extends AppCompatActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clothes_detailed_screen);
+        HelperDatabase db = new HelperDatabase(this);
 
         productPDesc = (TextView) findViewById(R.id.productPDesc);
         productPPrice = (TextView) findViewById(R.id.productPPrice);
@@ -35,8 +36,8 @@ public class ClothesDetailScreen extends AppCompatActivity implements View.OnCli
         String desc = i.getStringExtra("desc");
         item = db.getItem(desc);
 
-        //String j = item.getP_desc();
-        productPDesc.setText(desc);
+        String j = item.getP_desc();
+        productPDesc.setText(j);
         productPPrice.setText(String.valueOf(item.getP_price()));
         productPImage.setImageResource(this.getResources().getIdentifier(item.getImage(), "drawable", this.getPackageName()));
 

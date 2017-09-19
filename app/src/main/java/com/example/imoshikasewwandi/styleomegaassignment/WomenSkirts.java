@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.imoshikasewwandi.styleomegaassignment.MODEL_item.Item;
@@ -40,12 +42,22 @@ public class WomenSkirts extends AppCompatActivity {
         Item item = null;
         for(int i = 0; i<items.size(); i++){
             item = items.get(i);
-            if(item.getP_name().equals("Women skirt")){
+            if(item.getP_name().equals("Women Skirt")){
                 onlySkirts.add(item);
             }
         }
 
         ProductsAdapter pItemAdapter = new ProductsAdapter(this, R.layout.user_row, onlySkirts);
+        womenSkirtsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Item it = (Item)womenSkirtsList.getItemAtPosition(position);
+                String desc= it.getP_desc();
+                Intent i = new Intent(WomenSkirts.this, ClothesDetailScreen.class);
+                i.putExtra("desc",desc);
+                startActivity(i);
+            }
+        });
         womenSkirtsList.setAdapter(pItemAdapter);
 
 
@@ -77,10 +89,6 @@ public class WomenSkirts extends AppCompatActivity {
         } else if (id == R.id.womenSkirts) {
             Intent skirt = new Intent(WomenSkirts.this, WomenSkirts.class);
             startActivity(skirt);
-        } else if (id == R.id.womenSweaters) {
-            Intent sweater = new Intent(WomenSkirts.this, WomenSweaters.class);
-            startActivity(sweater);
-
         } else if (id == R.id.womenTopWear) {
             Intent tops = new Intent(WomenSkirts.this, WomenTopwear.class);
             startActivity(tops);

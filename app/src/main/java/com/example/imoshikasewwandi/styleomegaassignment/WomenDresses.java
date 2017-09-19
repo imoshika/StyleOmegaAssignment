@@ -44,7 +44,7 @@ public class WomenDresses extends AppCompatActivity {
         Item item = null;
         for(int i = 0; i<items.size(); i++){
                 item = items.get(i);
-            if(item.getP_name().equals("Women dress")){
+            if(item.getP_name().equals("Women Dress")){
                 onlyDresses.add(item);
             }
         }
@@ -91,10 +91,6 @@ public class WomenDresses extends AppCompatActivity {
         } else if (id == R.id.womenSkirts) {
             Intent skirt = new Intent(WomenDresses.this, WomenSkirts.class);
             startActivity(skirt);
-        } else if (id == R.id.womenSweaters) {
-            Intent sweater = new Intent(WomenDresses.this, WomenSweaters.class);
-            startActivity(sweater);
-
         } else if (id == R.id.womenTopWear) {
             Intent tops = new Intent(WomenDresses.this, WomenTopwear.class);
             startActivity(tops);
