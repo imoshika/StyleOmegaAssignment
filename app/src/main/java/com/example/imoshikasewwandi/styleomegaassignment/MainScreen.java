@@ -110,9 +110,6 @@ public class MainScreen extends AppCompatActivity
             Intent tops = new Intent(MainScreen.this, WomenTopwear.class);
             startActivity(tops);
 
-        } else if (id == R.id.womenJumpsuits) {
-            Intent jumpsuit = new Intent(MainScreen.this, WomenJumpsuits.class);
-            startActivity(jumpsuit);
         } else if(id == R.id.menShirts){
             Intent menShirts = new Intent(MainScreen.this, MenShirts.class);
             startActivity(menShirts);

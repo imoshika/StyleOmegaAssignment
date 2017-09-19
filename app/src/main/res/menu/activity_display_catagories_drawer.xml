@@ -19,12 +19,6 @@
             android:title="Women wear -> Top wear" />
 
         <item
-            android:id="@+id/womenSweaters"
-            android:title="Women wear -> Sweaters" />
-        <item
-            android:id="@+id/womenJumpsuits"
-            android:title="Women wear -> Jump suits" />
-        <item
             android:id="@+id/menShirts"
             android:title="Men wear -> Shirts" />
         <item

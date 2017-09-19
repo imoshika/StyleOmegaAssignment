@@ -95,9 +95,6 @@ public class WomenDresses extends AppCompatActivity {
             Intent tops = new Intent(WomenDresses.this, WomenTopwear.class);
             startActivity(tops);
 
-        } else if (id == R.id.womenJumpsuits) {
-            Intent jumpsuit = new Intent(WomenDresses.this, WomenJumpsuits.class);
-            startActivity(jumpsuit);
         }
 
         return super.onOptionsItemSelected(item);

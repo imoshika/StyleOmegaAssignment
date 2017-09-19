@@ -8,12 +8,12 @@
     tools:context="com.example.imoshikasewwandi.styleomegaassignment.UpdateProfileActivity">
 
     <EditText
-        android:id="@+id/eFirstName"
+        android:id="@+id/updateFirstName"
         android:layout_width="341dp"
         android:layout_height="47dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="34dp"
         android:backgroundTint="@android:color/black"
         android:ems="10"
         android:hint="@string/txt_fname"
@@ -25,7 +25,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/eLastName"
+        android:id="@+id/updateLastName"
         android:layout_width="343dp"
         android:layout_height="43dp"
         android:layout_marginLeft="8dp"
@@ -39,10 +39,10 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eFirstName" />
+        app:layout_constraintTop_toBottomOf="@+id/updateFirstName" />
 
     <EditText
-        android:id="@+id/eUsername"
+        android:id="@+id/updateUsername"
         android:layout_width="345dp"
         android:layout_height="44dp"
         android:layout_marginLeft="8dp"
@@ -56,10 +56,10 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eLastName" />
+        app:layout_constraintTop_toBottomOf="@+id/updateLastName" />
 
     <EditText
-        android:id="@+id/ePassword"
+        android:id="@+id/updatePassword"
         android:layout_width="345dp"
         android:layout_height="47dp"
         android:layout_marginTop="14dp"
@@ -71,10 +71,10 @@
         app:layout_constraintHorizontal_bias="0.205"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eUsername" />
+        app:layout_constraintTop_toBottomOf="@+id/updateUsername" />
 
     <EditText
-        android:id="@+id/eContact"
+        android:id="@+id/updateContact"
         android:layout_width="345dp"
         android:layout_height="47dp"
         android:layout_marginLeft="8dp"
@@ -88,7 +88,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/updateEmail" />
 
     <Button
         android:id="@+id/updateBtn"
@@ -101,11 +101,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eContact"
+        app:layout_constraintTop_toBottomOf="@+id/updateContact"
         app:layout_constraintVertical_bias="0.017" />
 
     <EditText
-        android:id="@+id/eEmail"
+        android:id="@+id/updateEmail"
         android:layout_width="344dp"
         android:layout_height="51dp"
         android:layout_marginLeft="8dp"
@@ -117,10 +117,9 @@
         android:inputType="textEmailAddress"
         android:textColor="@android:color/black"
         android:textColorHint="@android:color/black"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ePassword" />
+        app:layout_constraintTop_toBottomOf="@+id/updatePassword" />
 
 
 </android.support.constraint.ConstraintLayout>

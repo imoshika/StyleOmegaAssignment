@@ -24,10 +24,11 @@ import java.util.List;
 
 public class HelperDatabase extends SQLiteOpenHelper{
 
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 6;
     private static final String DATABASE_NAME = "Management.db";
     private static final String TABLE_CUSTOMER = "customer";
     private static final String TABLE_PRODUCTS = "product_items";
+    private static final String TABLE_CART = "cart";
 
     //column names for the table customer
     private static final String COLUMN_ID = "cust_id";
@@ -47,6 +48,12 @@ public class HelperDatabase extends SQLiteOpenHelper{
     private static final String PRODUCT_QTY = "p_qty";
     private static final String PRODUCT_IMAGE = "p_img";
 
+    //column names for the table addTocart
+    private static final String P_ID = "pid";
+    private static final String PDESC = "pdesc";
+    private static final String PPRICE = "price";
+    private static final String P_IMAGE = "image";
+
     //creating the customer table
     private String CREATE_CUSTOMER_TABLE = "CREATE TABLE " + TABLE_CUSTOMER + "("
             + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -65,6 +72,12 @@ public class HelperDatabase extends SQLiteOpenHelper{
             + PRODUCT_QTY + " DOUBLE,"
             + PRODUCT_IMAGE + " TEXT" + ")";
 
+    //creating the add to cart table
+    private String CREATE_CART_TABLE = "CREATE TABLE " + TABLE_CART + "("
+            + P_ID + " INTEGER PRIMARY KEY," + PDESC +" TEXT,"
+            + PPRICE + " DOUBLE,"
+            + P_IMAGE + " TEXT" + ")";
+
     private String DROP_CUSTOMER_TABLE = "DROP TABLE IF EXISTS " + TABLE_CUSTOMER;
     private String DROP_PRODUCTS_TABLE = "DROP TABLE IF EXISTS " + TABLE_PRODUCTS;
 
@@ -76,6 +89,7 @@ public class HelperDatabase extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_CUSTOMER_TABLE);
         db.execSQL(CREATE_PRODUCTS_TABLE);
+        db.execSQL(CREATE_CART_TABLE);
         //this.db = db;
     }
 
@@ -115,7 +129,9 @@ public class HelperDatabase extends SQLiteOpenHelper{
         values.put(COLUMN_EMAIL, user.getU_email());
         values.put(COLUMN_CONTACT, user.getContact());
 
+        //db.update(TABLE_CUSTOMER, values, COLUMN_ID + " =" + user.getID(),null);
         db.update(TABLE_CUSTOMER, values, COLUMN_ID + " = ?", new String[]{String.valueOf(user.getID())});
+        //sqldb.update(TABLE_USER, values, COLUMN_USER_ID + " =" + user.getId(), null);
         db.close();
     }
 

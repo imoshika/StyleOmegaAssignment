@@ -39,13 +39,13 @@ public class UpdateProfileActivity extends AppCompatActivity implements View.OnC
     }
 
     private void initlzeViews(){
-        Fname = (EditText) findViewById(R.id.eFirstName);
-        Lname = (EditText) findViewById(R.id.eLastName);
-        cust_username = (EditText) findViewById(R.id.eUsername);
-        cust_password = (EditText) findViewById(R.id.ePassword);
-        Contact_number = (EditText) findViewById(R.id.eContact);
-        Email = (EditText) findViewById(R.id.eEmail);
-        updateBtn = (Button) findViewById(R.id.registerBtn);
+        Fname = (EditText) findViewById(R.id.updateFirstName);
+        Lname = (EditText) findViewById(R.id.updateLastName);
+        cust_username = (EditText) findViewById(R.id.updateUsername);
+        cust_password = (EditText) findViewById(R.id.updatePassword);
+        Contact_number = (EditText) findViewById(R.id.updateContact);
+        Email = (EditText) findViewById(R.id.updateEmail);
+        updateBtn = (Button) findViewById(R.id.updateBtn);
 
     }
 
