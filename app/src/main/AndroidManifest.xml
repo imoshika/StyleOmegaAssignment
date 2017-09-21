@@ -35,7 +35,9 @@
         <activity android:name=".MenJackets" />
         <activity android:name=".MenShorts" />
         <activity android:name=".MenJeans" />
-        <activity android:name=".KidsWear"></activity>
+        <activity android:name=".KidsWear" />
+        <activity android:name=".CartActivity" />
+        <activity android:name=".CheckoutActivity"></activity>
     </application>
 
 </manifest>

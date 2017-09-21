@@ -4,7 +4,7 @@ package com.example.imoshikasewwandi.styleomegaassignment;
  * Created by Imoshika Sewwandi on 9/20/2017.
  */
 
-public class Cart_modelClass {
+public class Cart {
     int p_id;
     String p_desc;
     double price;

@@ -20,7 +20,7 @@ public class ClothesDetailScreen extends AppCompatActivity implements View.OnCli
     TextView productPPrice;
     ImageView productPImage;
     ImageButton imagePButton;
-
+    HelperDatabase db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +47,10 @@ public class ClothesDetailScreen extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View v) {
         if(imagePButton.getId() == R.id.imagePButton){
-            Toast.makeText(getApplicationContext(), item.getP_desc()+"is added to your cart", Toast.LENGTH_LONG).show();
+            db.addItemToCart(item);
+            Toast.makeText(getApplicationContext(), item.getP_desc()+" is added to your cart", Toast.LENGTH_LONG).show();
+            Intent mainscreen = new Intent(ClothesDetailScreen.this, MainScreen.class);
+            startActivity(mainscreen);
         }
     }
 

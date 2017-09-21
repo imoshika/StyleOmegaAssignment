@@ -130,6 +130,12 @@ public class MainScreen extends AppCompatActivity
         }else if(id == R.id.kidsWear){
             Intent kids = new Intent(MainScreen.this, KidsWear.class);
             startActivity(kids);
+        }else if(id == R.id.cartdetails){
+            Intent cart = new Intent(MainScreen.this, CartActivity.class);
+            startActivity(cart);
+        }else if(id == R.id.checkout){
+            Intent checkout = new Intent(MainScreen.this, CheckoutActivity.class);
+            startActivity(checkout);
         }
 
 

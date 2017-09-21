@@ -1,20 +1,15 @@
 package com.example.imoshikasewwandi.styleomegaassignment.SQL_DATABASE;
 
-import android.content.ClipData;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.view.View;
-import android.widget.ListView;
 
+import com.example.imoshikasewwandi.styleomegaassignment.Cart;
 import com.example.imoshikasewwandi.styleomegaassignment.MODEL_item.Item;
 import com.example.imoshikasewwandi.styleomegaassignment.MODEL_user.User;
 
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -114,6 +109,19 @@ public class HelperDatabase extends SQLiteOpenHelper{
         values.put(COLUMN_CONTACT, user.getContact());
 
         db.insert(TABLE_CUSTOMER, null, values);
+        db.close();
+    }
+
+    public void addItemToCart(Item item){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(P_ID, item.getPID());
+        values.put(PDESC, item.getP_desc());
+        values.put(PPRICE, item.getP_price());
+        values.put(P_IMAGE, item.getImage());
+
+        db.insert(TABLE_CART, null, values);
         db.close();
     }
 
@@ -225,6 +233,26 @@ public class HelperDatabase extends SQLiteOpenHelper{
         }
 
         return item;
+    }
+
+    public Cart getCartItem(){
+        int pid = Integer.parseInt(PRODUCT_ID);
+        SQLiteDatabase db  = getReadableDatabase();
+        Cart cart = null;
+
+        String selectItem = "SELECT * FROM " + TABLE_CART + " WHERE " + P_ID + "='" + pid+ "'";
+
+        Cursor c = db.rawQuery(selectItem, null);
+        if (c.moveToFirst()) {
+            cart = new Cart();
+            cart.setP_id(c.getInt(c.getColumnIndex(P_ID)));
+            cart.setP_desc(c.getString(c.getColumnIndex(PDESC)));
+            cart.setPrice(c.getDouble(c.getColumnIndex(PPRICE)));
+            cart.setImage(c.getString(c.getColumnIndex(P_IMAGE)));
+
+        }
+
+        return cart;
     }
 
 }

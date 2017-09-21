@@ -36,6 +36,12 @@
         <item
             android:id="@+id/kidsWear"
             android:title="Kids wear" />
+        <item
+            android:id="@+id/cartdetails"
+            android:title="Check cart details"/>
+        <item
+            android:id="@+id/checkout"
+            android:title="Checkout"/>
     </group>
 
     <item android:title="Communicate">

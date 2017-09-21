@@ -22,8 +22,6 @@ public class WomenDresses extends AppCompatActivity {
     HelperDatabase db;
     Item i;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

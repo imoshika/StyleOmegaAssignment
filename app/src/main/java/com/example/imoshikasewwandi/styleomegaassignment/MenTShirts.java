@@ -43,7 +43,7 @@ public class MenTShirts extends AppCompatActivity {
         Item item = null;
         for(int i = 0; i<items.size(); i++){
             item = items.get(i);
-            if(item.getP_name().equals("Women jean")){
+            if(item.getP_name().equals("Men tshirt")){
                 onlyJeans.add(item);
             }
         }
